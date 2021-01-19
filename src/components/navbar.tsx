@@ -1,15 +1,18 @@
 import styled from "styled-components";
+import { useTypedSelector } from "../redux";
 import Connect from "./connect";
 import { MarginalContainer } from "./container";
 
 const Navbar = () => {
+  const isConnected = useTypedSelector((state) => state.app.connected);
+
   return (
     <NavbarContainer>
       <Label>Socket Ping</Label>
       <Connect />
       <Indicator>
-        <Badge />
-        <span>Connected</span>
+        <Badge active={isConnected} />
+        <span>{isConnected ? "Active " : "Passive"}</span>
       </Indicator>
     </NavbarContainer>
   );
@@ -48,13 +51,17 @@ const Indicator = styled.div`
 
   ${({ theme }) => theme?.media?.md} {
     margin: 1rem 0;
+    width: 100%;
+    width: unset;
   }
 `;
 
-const Badge = styled.div`
+const Badge = styled.div<{ active: boolean }>`
   width: 10px;
   height: 10px;
-  background-color: ${({ theme }) => theme?.colors?.connected};
+  transition: 0.2s;
+  background-color: ${({ theme, active }) =>
+    active ? theme?.colors?.connected : theme?.colors?.notConnected};
   border-radius: 50%;
 `;
 

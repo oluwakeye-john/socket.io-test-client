@@ -9,7 +9,6 @@ export const MarginalContainer = styled.div`
 
 export const SectionContainer = styled.div`
   width: 45%;
-  /* border-right: 1.2px solid rgba(0, 0, 0, 0.3); */
   background-color: #fff;
   border: 1px solid #f2f2f2;
   min-height: 60vh;
@@ -19,4 +18,15 @@ export const SectionContainer = styled.div`
     width: 100%;
     padding: 1.5rem;
   }
+`;
+
+export const ScrollableSectionContent = styled.div`
+  height: 40vh;
+  overflow-y: auto;
+  font-size: 14px;
+`;
+
+export const Title = styled.h2`
+  margin-bottom: 2rem;
+  color: ${({ theme }) => theme?.colors?.primary};
 `;

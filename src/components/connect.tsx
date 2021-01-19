@@ -1,22 +1,17 @@
 import styled from "styled-components";
 import { CustomButton } from "./button";
-import socketIO from "../socket";
+
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import { connectAction } from "../redux/action";
 
 export const Connect = () => {
   const [url, setUrl] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    socketIO.init(url, onConnect, onAnyEvent);
-  };
-
-  const onConnect = () => {
-    alert("connected...");
-  };
-
-  const onAnyEvent = () => {
-    // alert("connected...");
+    dispatch(connectAction(url));
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
