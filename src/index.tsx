@@ -5,9 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
+import { GlobalStyles } from "./theme/global";
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
+    <GlobalStyles />
     <React.StrictMode>
       <App />
     </React.StrictMode>

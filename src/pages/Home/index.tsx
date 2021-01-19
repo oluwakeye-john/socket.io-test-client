@@ -1,12 +1,14 @@
-import { HomeContainer } from "./style";
-import Connect from "../../components/connect";
+import { HomeContainer, HomeFlex } from "./style";
+import EmitBox from "../../components/emit";
+import ResultBox from "../../components/result";
 
 const Home = () => {
   return (
     <HomeContainer>
-      <Connect />
-      <p>Hello world...</p>
-      <p>Hello world</p>
+      <HomeFlex>
+        <EmitBox />
+        <ResultBox />
+      </HomeFlex>
     </HomeContainer>
   );
 };

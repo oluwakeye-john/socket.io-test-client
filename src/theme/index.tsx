@@ -5,7 +5,9 @@ const media = {
 };
 
 const colors = {
-  primary: "maroon",
+  primary: "#1A3D5D",
+  notConnected: "red",
+  connected: "green",
 };
 
 const theme = {

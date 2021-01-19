@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import Connect from "./connect";
 import { MarginalContainer } from "./container";
 
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <h3>Socket Ping</h3>
+      <Label>Socket Ping</Label>
+      <Connect />
       <Indicator>
         <Badge />
-        <span>Not connected</span>
+        <span>Connected</span>
       </Indicator>
     </NavbarContainer>
   );
@@ -17,10 +19,22 @@ const NavbarContainer = styled(MarginalContainer)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1.5rem 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
 
-  h3 {
-    margin: 0;
+  ${({ theme }) => theme?.media?.md} {
+    flex-direction: column;
+  }
+`;
+
+const Label = styled.h3`
+  margin: 0;
+
+  ${({ theme }) => theme?.media?.md} {
+    align-self: flex-start;
+    margin: 1rem 0;
   }
 `;
 
@@ -31,12 +45,16 @@ const Indicator = styled.div`
   span {
     margin-left: 10px;
   }
+
+  ${({ theme }) => theme?.media?.md} {
+    margin: 1rem 0;
+  }
 `;
 
 const Badge = styled.div`
   width: 10px;
   height: 10px;
-  background-color: red;
+  background-color: ${({ theme }) => theme?.colors?.connected};
   border-radius: 50%;
 `;
 

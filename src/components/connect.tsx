@@ -1,22 +1,27 @@
 import styled from "styled-components";
+import { CustomButton } from "./button";
 
 export const Connect = () => {
   return (
     <StyledForm>
-      <StyledInput type="url" placeholder="Enter url..." required />
-      <StyledButton type="submit">Connect</StyledButton>
+      <StyledInput type="url" placeholder="Enter url ..." required />
+      <CustomButton type="submit">Connect</CustomButton>
     </StyledForm>
   );
 };
 
 const StyledForm = styled.form`
   display: flex;
+
+  ${({ theme }) => theme?.media?.md} {
+    width: 100%;
+  }
 `;
 
 const StyledInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 7px 20px;
-  width: 30%;
+  width: 100%;
   border-radius: 4px;
   margin-right: 20px;
 
@@ -25,19 +30,6 @@ const StyledInput = styled.input`
   }
   ${({ theme }) => theme?.media?.md} {
     width: 100%;
-  }
-`;
-
-const StyledButton = styled.button`
-  background-color: ${({ theme }) => theme?.colors?.primary};
-  font-weight: 500;
-  cursor: pointer;
-  color: #fff;
-  border: 0;
-  border-radius: 4px;
-  padding: 10px 20px;
-  &:focus {
-    outline: none;
   }
 `;
 
