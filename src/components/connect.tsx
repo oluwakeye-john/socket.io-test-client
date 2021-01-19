@@ -1,10 +1,36 @@
 import styled from "styled-components";
 import { CustomButton } from "./button";
+import socketIO from "../socket";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 export const Connect = () => {
+  const [url, setUrl] = useState("");
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    socketIO.init(url, onConnect, onAnyEvent);
+  };
+
+  const onConnect = () => {
+    alert("connected...");
+  };
+
+  const onAnyEvent = () => {
+    // alert("connected...");
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUrl(e.target.value);
+  };
   return (
-    <StyledForm>
-      <StyledInput type="url" placeholder="Enter url ..." required />
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledInput
+        value={url}
+        onChange={handleChange}
+        type="url"
+        placeholder="Enter url ..."
+        required
+      />
       <CustomButton type="submit">Connect</CustomButton>
     </StyledForm>
   );
