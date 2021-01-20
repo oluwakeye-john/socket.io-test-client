@@ -20,17 +20,24 @@ const ResultBox = () => {
         <MdDelete onClick={handleDelete} size={20} />
       </ResultHeading>
       <ScrollableSectionContent>
-        {result.map((item: any, index: number) => (
-          <div style={{ display: "flex" }} key={index}>
-            <p>
-              <span>{item.timeStamp}</span>
-              {` `}---{` `}
-              <span>{item.eventName}</span>
-              {` `}---{` `}
-              <span>{item.eventData}</span>
-            </p>
-          </div>
-        ))}
+        {result.map((item: any, index: number) => {
+          let msg = item.eventData;
+          console.log("msg", msg, typeof msg);
+          if (typeof msg === "object") {
+            msg = JSON.stringify(msg);
+          }
+          return (
+            <div style={{ display: "flex" }} key={index}>
+              <p>
+                <span>{item.timeStamp}</span>
+                {` `}---{` `}
+                <span>{item.eventName}</span>
+                {` `}---{` `}
+                <span>{msg}</span>
+              </p>
+            </div>
+          );
+        })}
       </ScrollableSectionContent>
     </SectionContainer>
   );

@@ -17,6 +17,7 @@ export const SectionContainer = styled.div`
   ${({ theme }) => theme?.media?.md} {
     width: 100%;
     padding: 1.5rem;
+    margin-bottom: 2rem;
   }
 `;
 

@@ -11,4 +11,9 @@ export const CustomButton = styled.button`
   &:focus {
     outline: none;
   }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
 `;
