@@ -22,7 +22,7 @@ export const SectionContainer = styled.div`
 `;
 
 export const ScrollableSectionContent = styled.div`
-  height: 40vh;
+  height: 50vh;
   overflow-y: auto;
   font-size: 14px;
 `;

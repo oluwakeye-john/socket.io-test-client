@@ -24,7 +24,6 @@ const EmitBox = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     let payload;
-    console.log({ input });
 
     try {
       if (input.type === "boolean") {
@@ -60,8 +59,6 @@ const EmitBox = () => {
   if (input.type === "object") {
     as = "textarea";
   }
-
-  console.log({ as });
 
   return (
     <SectionContainer>

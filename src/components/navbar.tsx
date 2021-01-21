@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
-      <Label>Socket Ping</Label>
+      <Label>Socket Client</Label>
       <Connect />
       <Indicator>
         <Badge active={isConnected} />

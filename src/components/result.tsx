@@ -4,14 +4,24 @@ import { MdDelete } from "react-icons/md";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { deleteAction } from "../redux/action";
+import ReactJson from "react-json-view";
+import { useEffect, useRef } from "react";
 
 const ResultBox = () => {
   const dispatch = useDispatch();
+  const resultBoxRef = useRef<HTMLDivElement>(null);
   const result = useTypedSelector((state) => state?.app?.result);
 
   const handleDelete = () => {
     dispatch(deleteAction());
   };
+
+  useEffect(() => {
+    if (resultBoxRef && resultBoxRef.current) {
+      console.log("here");
+      resultBoxRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [result]);
 
   return (
     <SectionContainer>
@@ -23,21 +33,24 @@ const ResultBox = () => {
         {result.map((item: any, index: number) => {
           let msg = item.eventData;
           console.log("msg", msg, typeof msg);
-          if (typeof msg === "object") {
-            msg = JSON.stringify(msg);
+          let isObject = typeof msg === "object";
+          if (!isObject) {
+            msg = { msg };
+            isObject = true;
           }
           return (
-            <div style={{ display: "flex" }} key={index}>
-              <p>
+            <div key={index}>
+              <p style={{ display: "flex" }}>
                 <span>{item.timeStamp}</span>
                 {` `}---{` `}
                 <span>{item.eventName}</span>
                 {` `}---{` `}
-                <span>{msg}</span>
               </p>
+              <p>{isObject ? <ReactJson src={msg} /> : <span>{msg}</span>}</p>
             </div>
           );
         })}
+        <p ref={resultBoxRef}></p>
       </ScrollableSectionContent>
     </SectionContainer>
   );
