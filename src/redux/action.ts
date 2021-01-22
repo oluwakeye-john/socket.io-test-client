@@ -23,6 +23,13 @@ export const connectAction = (url: string) => {
   };
 };
 
+export const disconnectAction = () => {
+  return (dispatch: any) => {
+    socketIO.disconnect();
+    dispatch(action(Actions.SET_CONNECTED, false));
+  };
+};
+
 export const emitAction = (eventName: string, eventData: any) => {
   return (dispatch: any) => {
     socketIO.emit(eventName, eventData);
@@ -38,5 +45,11 @@ export const emitAction = (eventName: string, eventData: any) => {
 export const deleteAction = () => {
   return (dispatch: any) => {
     dispatch(action(Actions.DELETE_RESULT));
+  };
+};
+
+export const showModalAction = (show: boolean) => {
+  return (dispatch: any) => {
+    dispatch(action(Actions.UPDATE_HELP_MODAL, show));
   };
 };

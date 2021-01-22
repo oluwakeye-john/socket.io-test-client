@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { emitAction } from "../redux/action";
 import { CustomButton } from "./button";
@@ -37,11 +37,11 @@ const EmitBox = () => {
       }
       dispatch(emitAction(input.eventName, payload));
     } catch {
-      alert("error transforming stuffs");
+      alert("Error Transforming Inpur");
     }
   };
 
-  const handleChange = (
+  const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
@@ -54,10 +54,10 @@ const EmitBox = () => {
     }
   };
 
-  let as: null | string = "input";
+  // let as: null | string = "input";
 
   if (input.type === "object") {
-    as = "textarea";
+    // as = "textarea";
   }
 
   return (
@@ -71,7 +71,7 @@ const EmitBox = () => {
             name="eventName"
             value={input.eventName}
             placeholder="Event Name"
-            onChange={handleChange}
+            onChange={handleInputChange}
           />
         </EventInputLabel>
         <EventInputLabel>
@@ -80,7 +80,7 @@ const EmitBox = () => {
             as="select"
             value={input.type}
             name="type"
-            onChange={handleChange}
+            onChange={handleInputChange}
           >
             <option value="string">String</option>
             <option value="number">Number</option>
@@ -93,18 +93,24 @@ const EmitBox = () => {
           {input.type === "number" && (
             <NormalInput
               type="number"
-              onChange={handleChange}
+              onChange={handleInputChange}
               value={input.eventData}
             />
           )}
           {input.type === "string" && (
-            <NormalInput onChange={handleChange} value={input.eventData} />
+            <NormalInput onChange={handleInputChange} value={input.eventData} />
           )}
           {input.type === "object" && (
-            <TextAreaInput onChange={handleChange} value={input.eventData} />
+            <TextAreaInput
+              onChange={handleInputChange}
+              value={input.eventData}
+            />
           )}
           {input.type === "boolean" && (
-            <BooleanInput onChange={handleChange} value={input.eventData} />
+            <BooleanInput
+              onChange={handleInputChange}
+              value={input.eventData}
+            />
           )}
         </EventInputLabel>
         <CustomButton disabled={!isConnected}>Emit</CustomButton>
@@ -118,7 +124,6 @@ const TextAreaInput = ({ value, onChange }: any) => {
 
   const handlePretty = () => {
     if (!error) {
-      console.log("..");
       var obj = JSON.parse(value);
       var pretty = JSON.stringify(obj, undefined, 2);
       const elem = { target: { value: pretty, name: "eventData" } };
@@ -126,7 +131,7 @@ const TextAreaInput = ({ value, onChange }: any) => {
     }
   };
 
-  const handleChange = (e: any) => {
+  const handleInputChange = (e: any) => {
     try {
       const { value } = e.target;
       JSON.parse(value);
@@ -146,7 +151,7 @@ const TextAreaInput = ({ value, onChange }: any) => {
         value={value}
         name="eventData"
         placeholder="Event data"
-        onChange={handleChange}
+        onChange={handleInputChange}
       />
       <button onClick={handlePretty} type="button">
         Prettify

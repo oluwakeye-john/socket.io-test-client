@@ -22,9 +22,12 @@ class SocketIO {
       this.counter += 1;
     });
     this.IO.onAny((eventName, args) => {
-      console.log({ eventName, args: args });
       onEvent(eventName, args);
     });
+  }
+
+  disconnect() {
+    this.IO?.disconnect();
   }
 
   emit(eventName: string, eventData: any) {

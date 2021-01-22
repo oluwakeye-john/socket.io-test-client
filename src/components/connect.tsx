@@ -3,15 +3,21 @@ import { CustomButton } from "./button";
 
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { connectAction } from "../redux/action";
+import { connectAction, disconnectAction } from "../redux/action";
+import { useTypedSelector } from "../redux";
 
 export const Connect = () => {
   const [url, setUrl] = useState("");
   const dispatch = useDispatch();
+  const connected = useTypedSelector((state) => state?.app?.connected);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    dispatch(connectAction(url));
+    if (!connected) {
+      dispatch(connectAction(url));
+    } else {
+      dispatch(disconnectAction());
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,10 +29,12 @@ export const Connect = () => {
         value={url}
         onChange={handleChange}
         type="url"
-        placeholder="Enter url ..."
+        placeholder="https://your.url"
         required
       />
-      <CustomButton type="submit">Connect</CustomButton>
+      <CustomButton type="submit">
+        {connected ? "Disconnect" : "Connect"}
+      </CustomButton>
     </StyledForm>
   );
 };
