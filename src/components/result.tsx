@@ -39,13 +39,11 @@ const ResultBox = () => {
             isObject = true;
           }
           return (
-            <div key={index}>
+            <div key={index} style={{ margin: "2rem 0" }}>
               <p style={{ display: "flex" }}>
                 <span>{item.timeStamp}</span>
-                {` `}---{` `}
-                <span>{item.eventName}</span>
-                {` `}---{` `}
               </p>
+              <p>{item.eventName}</p>
               <p>{isObject ? <ReactJson src={msg} /> : <span>{msg}</span>}</p>
             </div>
           );

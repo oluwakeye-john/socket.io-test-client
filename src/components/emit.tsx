@@ -116,6 +116,16 @@ const EmitBox = () => {
 const TextAreaInput = ({ value, onChange }: any) => {
   const [error, setError] = useState(false);
 
+  const handlePretty = () => {
+    if (!error) {
+      console.log("..");
+      var obj = JSON.parse(value);
+      var pretty = JSON.stringify(obj, undefined, 2);
+      const elem = { target: { value: pretty, name: "eventData" } };
+      onChange(elem);
+    }
+  };
+
   const handleChange = (e: any) => {
     try {
       const { value } = e.target;
@@ -127,16 +137,21 @@ const TextAreaInput = ({ value, onChange }: any) => {
     onChange(e);
   };
   return (
-    <EmitInputBox
-      error={error}
-      required
-      rows={5}
-      as="textarea"
-      value={value}
-      name="eventData"
-      placeholder="Event data"
-      onChange={handleChange}
-    />
+    <>
+      <EmitInputBox
+        error={error}
+        required
+        rows={5}
+        as="textarea"
+        value={value}
+        name="eventData"
+        placeholder="Event data"
+        onChange={handleChange}
+      />
+      <button onClick={handlePretty} type="button">
+        Prettify
+      </button>
+    </>
   );
 };
 

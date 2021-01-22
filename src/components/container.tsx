@@ -13,11 +13,11 @@ export const SectionContainer = styled.div`
   border: 1px solid #f2f2f2;
   min-height: 60vh;
   padding: 2.5rem;
+  margin-bottom: 2rem;
 
   ${({ theme }) => theme?.media?.md} {
     width: 100%;
     padding: 1.5rem;
-    margin-bottom: 2rem;
   }
 `;
 
