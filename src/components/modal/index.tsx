@@ -22,13 +22,23 @@ const HelpModal = () => {
         <Title>⚡ How to connect ⚡</Title>
         <ul>
           <li>
-            <p>Hello</p>
+            <p>Set the CORS origin on your server to (*)</p>
           </li>
           <li>
-            <p>Hello</p>
+            <p>Start your backend server</p>
           </li>
           <li>
-            <p>Hello</p>
+            <p>Connect and let's rock n roll</p>
+          </li>
+          <li>
+            Any issues?{` `}
+            <a
+              href="https://github.com/oluwakeye-john/socket.io-test-client"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Check our github page.
+            </a>
           </li>
         </ul>
       </ModalContainer>

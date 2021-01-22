@@ -37,7 +37,7 @@ const FAB = () => {
   );
 };
 
-const FABContainer = styled.div`
+const FABContainer = styled.button`
   position: fixed;
   cursor: pointer;
   bottom: 20px;
@@ -49,6 +49,8 @@ const FABContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  border: none;
 `;
 
 export default FAB;

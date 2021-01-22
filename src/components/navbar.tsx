@@ -36,8 +36,8 @@ const Label = styled.h3`
   margin: 0;
 
   ${({ theme }) => theme?.media?.md} {
-    align-self: flex-start;
-    margin: 1rem 0;
+    align-self: center;
+    margin: 1.5rem 0;
   }
 `;
 

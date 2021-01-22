@@ -40,13 +40,13 @@ const ResultBox = () => {
                 isObject = true;
               }
               return (
-                <div key={index} style={{ margin: "2rem 0" }}>
-                  <p style={{ display: "flex" }}>{item.timeStamp}</p>
+                <ResultItem key={index}>
+                  <ResultTimeStamp>{item.timeStamp}</ResultTimeStamp>
                   <p style={{ fontWeight: "bold" }}>{item.eventName}</p>
                   <p>
                     <ReactJson src={msg} />
                   </p>
-                </div>
+                </ResultItem>
               );
             })}
           </>
@@ -81,6 +81,15 @@ const ResultPlaceholder = styled.div`
     width: 200px;
     height: 200px;
   }
+`;
+
+const ResultItem = styled.div`
+  margin: 2rem 0;
+`;
+
+const ResultTimeStamp = styled.p`
+  color: #6b6b6b;
+  font-size: 13px;
 `;
 
 export default ResultBox;
