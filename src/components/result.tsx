@@ -40,11 +40,11 @@ const ResultBox = () => {
           }
           return (
             <div key={index} style={{ margin: "2rem 0" }}>
-              <p style={{ display: "flex" }}>
-                <span>{item.timeStamp}</span>
+              <p style={{ display: "flex" }}>{item.timeStamp}</p>
+              <p style={{ fontWeight: "bold" }}>{item.eventName}</p>
+              <p>
+                <ReactJson src={msg} />
               </p>
-              <p>{item.eventName}</p>
-              <p>{isObject ? <ReactJson src={msg} /> : <span>{msg}</span>}</p>
             </div>
           );
         })}
