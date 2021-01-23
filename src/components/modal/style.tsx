@@ -30,6 +30,17 @@ export const ModalContainer = styled.div<{ open?: boolean }>`
   transform: ${({ open }) => (open ? "scale(1)" : "scale(0.5)")};
 
   transition: 0.3s;
+
+  ${({ theme }) => theme?.media?.md} {
+    padding: 2.5rem 1rem;
+  }
 `;
 
 export const ModalContent = styled.div``;
+
+export const Pre = styled.pre`
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: justify;
+  font-size: 13px;
+`;

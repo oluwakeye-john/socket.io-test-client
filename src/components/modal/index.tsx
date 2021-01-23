@@ -3,7 +3,11 @@ import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../redux";
 import { showModalAction } from "../../redux/action";
 import { Title } from "../container";
-import { ModalContainer, ModalOverlay } from "./style";
+import { ModalContainer, ModalOverlay, Pre } from "./style";
+
+const corsCode = `require("socket.io")(http, {
+    cors: { origin: "*" },
+});`.trim();
 
 const HelpModal = () => {
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -22,7 +26,10 @@ const HelpModal = () => {
         <Title>⚡ How to connect ⚡</Title>
         <ul>
           <li>
-            <p>Set the CORS origin on your server to (*)</p>
+            <p>Update socket-io CORS origin </p>
+            <Pre style={{ maxWidth: "100%" }}>
+              <code>{corsCode}</code>
+            </Pre>
           </li>
           <li>
             <p>Start your backend server</p>
