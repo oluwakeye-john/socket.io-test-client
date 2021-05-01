@@ -1,9 +1,10 @@
 import socketIO from "../socket";
 import { action } from "typesafe-actions";
 import { Actions } from "./types";
+import { Dispatch } from "redux";
 
 export const connectAction = (url: string) => {
-  return (dispatch: any) => {
+  return (dispatch: Dispatch) => {
     const onConnect = (status: boolean) => {
       if (status) {
         dispatch(action(Actions.SET_CONNECTED, true));
@@ -17,6 +18,7 @@ export const connectAction = (url: string) => {
         eventName,
         eventData,
       };
+
       dispatch(action(Actions.UPDATE_RESULT, payload));
     };
     socketIO.init(url, onConnect, onAnyEvent);
@@ -24,14 +26,15 @@ export const connectAction = (url: string) => {
 };
 
 export const disconnectAction = () => {
-  return (dispatch: any) => {
+  return (dispatch: Dispatch) => {
     socketIO.disconnect();
+
     dispatch(action(Actions.SET_CONNECTED, false));
   };
 };
 
 export const emitAction = (eventName: string, eventData: any) => {
-  return (dispatch: any) => {
+  return (dispatch: Dispatch) => {
     socketIO.emit(eventName, eventData);
     const out = {
       timeStamp: new Date().toLocaleTimeString(),
@@ -43,13 +46,13 @@ export const emitAction = (eventName: string, eventData: any) => {
 };
 
 export const deleteAction = () => {
-  return (dispatch: any) => {
+  return (dispatch: Dispatch) => {
     dispatch(action(Actions.DELETE_RESULT));
   };
 };
 
 export const showModalAction = (show: boolean) => {
-  return (dispatch: any) => {
+  return (dispatch: Dispatch) => {
     dispatch(action(Actions.UPDATE_HELP_MODAL, show));
   };
 };
