@@ -1,13 +1,12 @@
-import { useTypedSelector } from "../redux";
-import { ScrollableSectionContent, SectionContainer, Title } from "./container";
-import { MdDelete } from "react-icons/md";
-import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { deleteAction } from "../redux/action";
-import ReactJson from "react-json-view";
 import { useEffect, useRef } from "react";
+import { MdDelete } from "react-icons/md";
+import ReactJson from "react-json-view";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
 import emptyIcon from "../assets/void2.svg";
-
+import { useTypedSelector } from "../redux";
+import { deleteAction } from "../redux/action";
+import { ScrollableSectionContent, SectionContainer, Title } from "./container";
 const ResultBox = () => {
   const dispatch = useDispatch();
   const resultBoxRef = useRef<HTMLDivElement>(null);
