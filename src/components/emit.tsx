@@ -37,7 +37,7 @@ const EmitBox = () => {
       }
       dispatch(emitAction(input.eventName, payload));
     } catch {
-      alert("Error Transforming Inpur");
+      alert("Error Transforming Input");
     }
   };
 
